@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import br.com.vivo.jobs.jobsscheduler.valid.TempoEstimadoValid;
+import br.com.vivo.jobs.jobscheduler.valid.TempoEstimadoValid;
 
 public class JobDto {
 

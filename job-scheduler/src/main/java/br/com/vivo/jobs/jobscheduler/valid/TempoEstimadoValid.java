@@ -1,4 +1,4 @@
-package br.com.vivo.jobs.jobsscheduler.valid;
+package br.com.vivo.jobs.jobscheduler.valid;
 
 
 import javax.validation.Constraint;

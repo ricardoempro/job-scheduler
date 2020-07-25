@@ -1,4 +1,4 @@
-package br.com.vivo.jobs.jobsscheduler.valid;
+package br.com.vivo.jobs.jobscheduler.valid;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
