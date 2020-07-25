@@ -19,7 +19,7 @@ public class JobDto {
 
 	@JsonProperty("Descrição")
 	@NotEmpty(message = "A descrição não pode ser vazia ou nula!")
-	@Size(min = 3)
+	@Size(min = 3,message = "A descrição deve ter no mínimo 3 caracteres!")
 	private String descricao;
 
 	@JsonProperty("Data Máxima de conclusão")

@@ -1,17 +1,14 @@
 package br.com.vivo.jobs.jobscheduler.valid;
 
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import br.com.vivo.jobs.jobscheduler.mapper.JobMapper;
+
 public class TempoEstimadoValidator implements ConstraintValidator<TempoEstimadoValid, String>{
 	
-	private static final Pattern PATTERN_HORA = Pattern.compile("([0-9]+) horas?");
-	private static final Pattern PATTERN_HORAMINUTO = Pattern.compile("([0-9]+) horas? ([0-9]+) min");
-	private static final Pattern PATTERN_APENASMINUTO = Pattern.compile("([0-9]+) min");
-	 
     @Override
     public void initialize(TempoEstimadoValid constraintAnnotation) {
         constraintAnnotation.value();
@@ -19,9 +16,9 @@ public class TempoEstimadoValidator implements ConstraintValidator<TempoEstimado
  
     @Override
     public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
-    	Matcher matcherHora = PATTERN_HORA.matcher(value);
-		Matcher matcherHoraMinuto = PATTERN_HORAMINUTO.matcher(value);
-		Matcher matcherApenasMin = PATTERN_APENASMINUTO.matcher(value);
+    	Matcher matcherHora = JobMapper.PATTERN_HORA.matcher(value);
+		Matcher matcherHoraMinuto = JobMapper.PATTERN_HORAMINUTO.matcher(value);
+		Matcher matcherApenasMin = JobMapper.PATTERN_APENASMINUTO.matcher(value);
 		
 		if (matcherHora.matches() && matcherHora.groupCount() == 1) {
 			return true;

@@ -9,9 +9,9 @@ import br.com.vivo.jobs.jobscheduler.model.Job;
 
 public class JobMapper {
 
-	private static final Pattern PATTERN_HORA = Pattern.compile("([0-9]+) horas?");
-	private static final Pattern PATTERN_HORAMINUTO = Pattern.compile("([0-9]+) horas? ([0-9]+) min");
-	private static final Pattern PATTERN_APENASMINUTO = Pattern.compile("([0-9]+) min");
+	public static final Pattern PATTERN_HORA = Pattern.compile("([0-9]+) horas?");
+	public static final Pattern PATTERN_HORAMINUTO = Pattern.compile("([0-9]+) horas? ([0-9]+) min");
+	public static final Pattern PATTERN_APENASMINUTO = Pattern.compile("([0-9]+) min");
 
 	public static Job dtoToModelObject(JobDto jobDto) {
 		return new Job(jobDto.getId(), jobDto.getDescricao(), jobDto.getDataMaximaConclusao(),

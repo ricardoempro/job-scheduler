@@ -9,8 +9,8 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
  
 
-@Target({FIELD})
-@Retention(RUNTIME)
+@Target({FIELD}) //A anotação apenas pode ser utilizada em fields
+@Retention(RUNTIME) //Essa validação é apenas em tempo de execução
 @Constraint(validatedBy = TempoEstimadoValidator.class)
 public @interface TempoEstimadoValid {
 	
