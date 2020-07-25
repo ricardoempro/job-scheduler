@@ -1,0 +1,15 @@
+server:
+  servlet:
+    context-path: /jobscheduler
+    
+spring:
+  application:
+    name: JobScheduler
+
+  
+  jackson:
+    locale: pt_BR
+    date-format: yyyy-MM-dd
+    time-zone: America/Sao_Paulo
+      
+      
