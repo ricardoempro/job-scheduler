@@ -63,5 +63,22 @@ public class JobControllerTests {
 	        .content(objectMapper.writeValueAsString(TestUtil.createJobListDtoValid( jobDtolist, "2019-11-10 09:00:00 até 2019-11-11 12:00:00"))))
 	        .andExpect(status().isOk());
 	}
+	
+	@Test
+	void createSchedule_ReturnError422() throws Exception {	 
+		
+		List<JobDto> jobDtolist = new ArrayList<JobDto>();
+		
+		jobDtolist.add(TestUtil.createJobDto(1L, "Importação de arquivos de fundos", LocalDateTime.parse("2019-11-10 12:00:00", TestUtil.formatter), "2 horas"));
+		jobDtolist.add(TestUtil.createJobDto(2L, "Importação de dados da Base Legada", LocalDateTime.parse("2019-11-11 12:00:00", TestUtil.formatter), "4aaa"));
+		jobDtolist.add(TestUtil.createJobDto(3L, "Importação de dados de integração", LocalDateTime.parse("2019-11-11 08:00:00", TestUtil.formatter), "6 ho"));		
+
+	  
+	   mockMvc.perform(post("/api/v1/jobs")
+	        .contentType("application/json")
+	        .content(objectMapper.writeValueAsString(TestUtil.createJobListDtoValid( jobDtolist, "2019-11-10 09:00:00 até 2019-11-11 12:00:00"))))
+	        .andExpect(status().is4xxClientError());
+	}
+	
 
 }

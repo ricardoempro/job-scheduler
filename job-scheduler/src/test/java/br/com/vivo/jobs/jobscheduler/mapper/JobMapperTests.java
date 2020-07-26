@@ -18,8 +18,8 @@ import br.com.vivo.jobs.jobscheduler.util.TestUtil;
 public class JobMapperTests {
 	
 	@Test
-	public void deveCriarJobTempoEstimadoHoraMinuto() {
-		JobDto jobDto = TestUtil.criaJobDto(1L, "Descrição teste", LocalDateTime.now(), "2 horas 30 min");
+	public void createJobTempoEstimadoHoraMinuto() {
+		JobDto jobDto = TestUtil.createJobDto(1L, "Descrição teste", LocalDateTime.now(), "2 horas 30 min");
 		Job job =  JobMapper.dtoToModelObject(jobDto);
 		
 		assertNotNull(job);
@@ -30,8 +30,8 @@ public class JobMapperTests {
 	}
 	
 	@Test
-	public void deveCriarJobTempoEstimadoHora() {
-		JobDto jobDto = TestUtil.criaJobDto(1L, "Descrição teste", LocalDateTime.now(), "3 horas");
+	public void createJobTempoEstimadoHora() {
+		JobDto jobDto = TestUtil.createJobDto(1L, "Descrição teste", LocalDateTime.now(), "3 horas");
 		Job job =  JobMapper.dtoToModelObject(jobDto);
 		
 		assertNotNull(job);
@@ -42,8 +42,8 @@ public class JobMapperTests {
 	}
 	
 	@Test
-	public void deveCriarJobTempoEstimadoMinuto() {
-		JobDto jobDto = TestUtil.criaJobDto(1L, "Descrição teste", LocalDateTime.now(), "35 min");
+	public void createJobTempoEstimadoMinuto() {
+		JobDto jobDto = TestUtil.createJobDto(1L, "Descrição teste", LocalDateTime.now(), "35 min");
 		Job job =  JobMapper.dtoToModelObject(jobDto);
 		
 		assertNotNull(job);
