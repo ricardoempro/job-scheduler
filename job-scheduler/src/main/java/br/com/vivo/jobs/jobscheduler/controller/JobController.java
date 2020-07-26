@@ -1,7 +1,7 @@
 package br.com.vivo.jobs.jobscheduler.controller;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +31,7 @@ public class JobController {
 	@GetMapping
 	public Job get() throws Exception {
 		LocalDateTime data = LocalDateTime.now();
-		LocalTime hora = LocalTime.now();
-		return new Job(1L, "Teste", data, hora);
+		return new Job(1L, "Teste", data, new BigDecimal("2.5"));
 	}
 	
 	@PostMapping("/mapper-test")
@@ -41,7 +40,7 @@ public class JobController {
 	}
 	
 	@PostMapping
-	public List<List<Job>> postListJobs(@Valid @RequestBody final JobListDto jobDtoList) throws Exception {
+	public List<List<Long>> postListJobs(@Valid @RequestBody final JobListDto jobDtoList) throws Exception {
 		
 		List<Job> jobList = new ArrayList<Job>();
 		

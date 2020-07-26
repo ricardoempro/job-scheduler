@@ -1,7 +1,7 @@
 package br.com.vivo.jobs.jobscheduler.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +9,13 @@ public class JobGroup {
 	
 	private LocalDateTime inicio;
 	private LocalDateTime fim;
-	private LocalTime tempoOcioso;
+	private BigDecimal tempoOcioso;
 	private List<Job> jobList;
 	
 	public JobGroup(LocalDateTime inicio, LocalDateTime fim, int totalHoras) {
 		this.inicio = inicio;
 		this.fim = fim;
-		this.tempoOcioso = LocalTime.of(totalHoras, 0);
+		this.tempoOcioso = BigDecimal.valueOf(totalHoras);
 		this.jobList = new ArrayList<Job>();
 		
 	}
@@ -36,11 +36,11 @@ public class JobGroup {
 		this.fim = fim;
 	}
 	
-	public LocalTime getTempoOcioso() {
+	public BigDecimal getTempoOcioso() {
 		return tempoOcioso;
 	}
 	
-	public void setTempoOcioso(LocalTime tempoOcioso) {
+	public void setTempoOcioso(BigDecimal tempoOcioso) {
 		this.tempoOcioso = tempoOcioso;
 	}
 	

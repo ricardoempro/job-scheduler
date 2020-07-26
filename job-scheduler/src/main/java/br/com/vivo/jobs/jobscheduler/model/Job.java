@@ -1,18 +1,18 @@
 package br.com.vivo.jobs.jobscheduler.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class Job {
 	
 	private Long id;
 	private String descricao;
 	private LocalDateTime dataMaximaConclusao;
-	private LocalTime tempoEstimado;
+	private BigDecimal tempoEstimado;
 	
 	public Job() {}
 	    
-	public Job(Long id, String descricao, LocalDateTime dataMaximaConclusao, LocalTime tempoEstimado) {
+	public Job(Long id, String descricao, LocalDateTime dataMaximaConclusao, BigDecimal tempoEstimado) {
 		this.id = id;
 		this.descricao = descricao;
 	    this.dataMaximaConclusao = dataMaximaConclusao;
@@ -43,11 +43,11 @@ public class Job {
 		this.dataMaximaConclusao = dataMaximaConclusao;
 	}
 	
-	public LocalTime getTempoEstimado() {
+	public BigDecimal getTempoEstimado() {
 		return tempoEstimado;
 	}
 	
-	public void setTempoEstimado(LocalTime tempoEstimado) {
+	public void setTempoEstimado(BigDecimal tempoEstimado) {
 		this.tempoEstimado = tempoEstimado;
 	}	
 

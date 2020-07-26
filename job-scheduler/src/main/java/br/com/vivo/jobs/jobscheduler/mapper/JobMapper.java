@@ -1,6 +1,7 @@
 package br.com.vivo.jobs.jobscheduler.mapper;
 
-import java.time.LocalTime;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +19,7 @@ public class JobMapper {
 				criaTempoExtimado(jobDto.getTempoEstimadoStr()));
 	}
 
-	private static LocalTime criaTempoExtimado(String tempoExtimadoStr) {
+	private static BigDecimal criaTempoExtimado(String tempoExtimadoStr) {
 		Matcher matcherHora = PATTERN_HORA.matcher(tempoExtimadoStr);
 		Matcher matcherHoraMinuto = PATTERN_HORAMINUTO.matcher(tempoExtimadoStr);
 		Matcher matcherApenasMin = PATTERN_APENASMINUTO.matcher(tempoExtimadoStr);
@@ -37,8 +38,9 @@ public class JobMapper {
 		if (matcherApenasMin.matches() && matcherApenasMin.groupCount() == 1) {
 			minutos = Integer.parseInt(matcherApenasMin.group(1).trim());
 		}
+		
 
-		return LocalTime.of(horas, minutos, 0);
+		return new BigDecimal(Double.valueOf(horas) + (Double.valueOf(minutos)/60)).setScale(2,RoundingMode.UP);
 	}
 
 }
