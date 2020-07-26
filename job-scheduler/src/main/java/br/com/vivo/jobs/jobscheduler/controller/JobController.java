@@ -48,7 +48,7 @@ public class JobController {
 			jobList.add(JobMapper.dtoToModelObject(jobDto));
 		});
 		
-		return jobService.createScheduleList(jobList, JanelaExecucaoMapper.StringtoJanelaExecucao(jobDtoList.getJanelaExecucao()));
+		return jobService.createScheduleList(jobList, JanelaExecucaoMapper.StringToJanelaExecucao(jobDtoList.getJanelaExecucao()));
 	}
 
 }

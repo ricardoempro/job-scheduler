@@ -7,7 +7,7 @@ import br.com.vivo.jobs.jobscheduler.model.JanelaExecucao;
 
 public class JanelaExecucaoMapper {
 
-	public static JanelaExecucao StringtoJanelaExecucao(String janelaExecucao) {
+	public static JanelaExecucao StringToJanelaExecucao(String janelaExecucao) {
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 

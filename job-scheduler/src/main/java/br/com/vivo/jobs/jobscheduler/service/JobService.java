@@ -18,8 +18,8 @@ public class JobService {
 	public List<List<Long>> createScheduleList(List<Job> jobList, JanelaExecucao janelaExecucao) {
 
 		List<List<Long>> scheduleList = new ArrayList<List<Long>>();
-		Job jobSelecionado;
 		List<Job> jobPendentes = new ArrayList<Job>();
+		Job jobSelecionado;
 
 		Long totalJobsGroup = janelaExecucao.getDataHoraInicio().until(janelaExecucao.getDataHoraFim(),
 				ChronoUnit.HOURS) / 8;
@@ -30,14 +30,16 @@ public class JobService {
 
 		while (!jobList.isEmpty()) {
 
-			jobSelecionado = getJobDataMaxMenor(jobList);
-			if (!putJobInGroup(jobSelecionado, listGroup, 0)) {
+			jobSelecionado = getJobDateMaxMinor(jobList);
+			if (putJobInGroup(jobSelecionado, listGroup, 0)) {
+				removeJobList(jobList, jobSelecionado);
+			} else {
 				jobPendentes.add(jobSelecionado);
+				removeJobList(jobList, jobSelecionado);
 			}
-			removeJobList(jobList, jobSelecionado);
 		}
 
-		return preencheScheduleList(scheduleList, listGroup);
+		return fillScheduleList(scheduleList, listGroup);
 
 	}
 
@@ -57,7 +59,7 @@ public class JobService {
 
 	}
 
-	private Job getJobDataMaxMenor(List<Job> jobList) {
+	private Job getJobDateMaxMinor(List<Job> jobList) {
 		Job job = jobList.get(0);
 
 		for (int i = 1; i < jobList.size(); i++) {
@@ -75,20 +77,24 @@ public class JobService {
 
 	private boolean putJobInGroup(Job job, List<JobGroup> listGroup, int nivel) {
 
-		JobGroup jobGroup = listGroup.get(nivel);
+		if (nivel < listGroup.size()) {
+			JobGroup jobGroup = listGroup.get(nivel);
 
-		if (jobGroup.getTempoOcioso().compareTo(job.getTempoEstimado()) == 1
-				|| jobGroup.getTempoOcioso().compareTo(job.getTempoEstimado()) == 0) {
-			jobGroup.getJobList().add(job);
-			jobGroup.setTempoOcioso(jobGroup.getTempoOcioso().subtract(job.getTempoEstimado()));
-			return true;
+			if (jobGroup.getTempoOcioso().compareTo(job.getTempoEstimado()) == 1
+					|| jobGroup.getTempoOcioso().compareTo(job.getTempoEstimado()) == 0) {
+				jobGroup.getJobList().add(job);
+				jobGroup.setTempoOcioso(jobGroup.getTempoOcioso().subtract(job.getTempoEstimado()));
+				return true;
+			} else {
+				return rearrangeJob(job, listGroup, nivel);
+			}
 		} else {
-			return remanejaJob(job, listGroup, nivel);
+			return false;
 		}
 
 	}
 
-	private boolean remanejaJob(Job job, List<JobGroup> listGroup, int nivel) {
+	private boolean rearrangeJob(Job job, List<JobGroup> listGroup, int nivel) {
 
 		BigDecimal tempoOciosoRestante;
 
@@ -109,7 +115,7 @@ public class JobService {
 							|| jobEmAnalise.getTempoEstimado().compareTo(tempoOciosoRestante) == 0)
 							&& jobEmAnalise.getTempoEstimado().compareTo(job.getTempoEstimado()) == -1) {
 
-						JobGroup jobGroupProx = listGroup.get(i + 1);
+						JobGroup jobGroupProx = listGroup.get(i + 1); 
 
 						if ((jobGroupProx.getFim().isBefore(jobEmAnalise.getDataMaximaConclusao())
 								|| jobGroupProx.getFim().isEqual(jobEmAnalise.getDataMaximaConclusao()))
@@ -124,7 +130,7 @@ public class JobService {
 							jobGroup.setTempoOcioso(jobGroup.getTempoOcioso().subtract(job.getTempoEstimado()));
 
 							return putJobInGroup(jobEmAnalise, listGroup, nivel + 1);
-						}
+						}	
 					}
 				}
 			}
@@ -135,7 +141,7 @@ public class JobService {
 
 	}
 
-	private List<List<Long>> preencheScheduleList(List<List<Long>> scheduleList, List<JobGroup> listGroup) {
+	private List<List<Long>> fillScheduleList(List<List<Long>> scheduleList, List<JobGroup> listGroup) {
 		List<Long> jobsGroupId;
 
 		for (JobGroup jobGroup : listGroup) {
