@@ -28,8 +28,8 @@ public class JobDto {
 	private LocalDateTime dataMaximaConclusao;
 
 	@JsonProperty("Tempo estimado")
-	@TempoEstimadoValid(message = "Deve ser informado no seguinte formato:" + (char) 34
-			+ " {quantidade de horas} hora(s) {quantidade de minutos} min" + (char) 34
+	@TempoEstimadoValid(message = "Deve ser informado no seguinte formato:"
+			+ " \"{quantidade de horas} hora(s) {quantidade de minutos} min\""
 			+ " Exemplos: 1 hora 30 min / 2 horas 45 min / 1 hora / 50 min")
 	private String tempoEstimadoStr;
 
