@@ -8,6 +8,17 @@ import java.util.regex.Pattern;
 import br.com.vivo.jobs.jobscheduler.dto.JobDto;
 import br.com.vivo.jobs.jobscheduler.model.Job;
 
+/**
+* Mapper que utiliza o DTO JobDto, recebido em uma lista (List<Job>) na requisição feita para o endpoint da controller "JobController", em um objeto "JobListDto"
+* e processa o tempo estimado, provido em texto, para um objeto BigDecimal que representará o tempo informado.
+* 
+* @see {@link br.com.vivo.jobs.jobscheduler.dto.JobListDto}
+* @see {@link br.com.vivo.jobs.jobscheduler.controller.JobController}
+* @see {@link br.com.vivo.jobs.jobscheduler.model.Job}
+* @author Ricardo Neves
+* 
+*/
+
 public class JobMapper {
 
 	public static final Pattern PATTERN_HORA = Pattern.compile("([0-9]+) horas?");

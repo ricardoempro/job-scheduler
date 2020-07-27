@@ -3,6 +3,13 @@ package br.com.vivo.jobs.jobscheduler.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+* Classe que representa um job com seus atributos.
+* 
+* @author Ricardo Neves
+* 
+*/
+
 public class Job {
 	
 	private Long id;

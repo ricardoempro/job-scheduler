@@ -4,6 +4,15 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+/**
+* CustomErrorResponse é a classe customizada para padronização das respostas das exceptions que são retornadas pela API.
+* 
+* Contém um Time Stamp, uma mensagem customizada e a mensagem de error gerada pela exception.
+* 
+* @author Ricardo Neves
+* 
+*/
+
 public class CustomErrorResponse {
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")

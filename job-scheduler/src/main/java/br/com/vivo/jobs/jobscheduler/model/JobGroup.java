@@ -5,6 +5,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+* Classe que representa um agrupamento de jobs a serem executados no período de 8h dentro da janela de execução.
+*   
+* @author Ricardo Neves
+* 
+*/
+
 public class JobGroup {
 	
 	private LocalDateTime inicio;

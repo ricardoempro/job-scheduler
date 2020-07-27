@@ -7,6 +7,14 @@ import javax.validation.ConstraintValidatorContext;
 
 import br.com.vivo.jobs.jobscheduler.mapper.JobMapper;
 
+/**
+* Classe que contém a validação da annotation @TempoEstimadoValid que valida o texto proveniente do campo tempoEstimado no objeto JobDto.
+* 
+* @see {@link br.com.vivo.jobs.jobscheduler.dto.JobDto}
+* @author Ricardo Neves
+* 
+*/
+
 public class TempoEstimadoValidator implements ConstraintValidator<TempoEstimadoValid, String>{
 	
     @Override

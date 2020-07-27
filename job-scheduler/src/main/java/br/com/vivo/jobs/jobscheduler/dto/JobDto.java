@@ -11,6 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.vivo.jobs.jobscheduler.valid.TempoEstimadoValid;
 
+/**
+* Data Transfer Object(DTO) para tranferência dos Jobs que são processados pela API.
+* 
+* @author Ricardo Neves
+* 
+*/
+
 public class JobDto {
 
 	@JsonProperty("ID")

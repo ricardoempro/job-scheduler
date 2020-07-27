@@ -2,6 +2,13 @@ package br.com.vivo.jobs.jobscheduler.model;
 
 import java.time.LocalDateTime;
 
+/**
+* Classe que representa a janela de execução com as datas início e fim.
+* 
+* @author Ricardo Neves
+* 
+*/
+
 public class JanelaExecucao {
 	
 	private LocalDateTime dataHoraInicio;

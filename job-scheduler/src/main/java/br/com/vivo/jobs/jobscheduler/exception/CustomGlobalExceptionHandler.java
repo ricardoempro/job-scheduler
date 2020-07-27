@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+* CustomGlobalExceptionHandler é a classe que lida com a intercepção das exceptions lançadas pela API e trata as mensagens
+* utilizando uma CustomErrorResponse.
+* @see {@link br.com.vivo.jobs.jobscheduler.exception.CustomErrorResponse}
+* 
+* @author Ricardo Neves
+* 
+*/
+
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		
