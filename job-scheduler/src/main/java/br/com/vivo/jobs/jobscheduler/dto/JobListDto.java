@@ -12,7 +12,7 @@ public class JobListDto {
 	
 	@JsonProperty("Janela de execução")
 	@NotEmpty(message = "A janela de execução não pode ser vazia ou nula!")
-	@Size(min = 43, max = 43, message = "Deve ser informada no formato: "
+	@Size(min = 43, max = 43, message = "A janela de execução deve ser informada no formato: "
 			+ "\"yyyy-MM-dd HH:mm:ss até yyyy-MM-dd HH:mm:ss\" !")
 	private String janelaExecucao;
 	

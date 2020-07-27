@@ -80,5 +80,12 @@ public class JobControllerTests {
 	        .andExpect(status().is4xxClientError());
 	}
 	
+	@Test
+	void createSchedule_JSONParseErroReturnError422() throws Exception {	 
+
+		mockMvc.perform(post("/api/v1/jobs").contentType("application/json").content(
+				"{\"Janela de execução\":\"2019-11-10 09:00:00 até 2019-11-11 12:00:00\",\"Lista de jobs\":[{\"ID\":1,\"Descrição\":\"Importação de arquivos de fundos\",\"Data Máxima de conclusão\":\"2019-11-10 12:00:00\",Tempo estimado\":\"2 horas\"}]}"))
+				.andExpect(status().is4xxClientError());
+	}
 
 }
