@@ -1,11 +1,14 @@
 package br.com.vivo.jobs.jobscheduler.util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import br.com.vivo.jobs.jobscheduler.dto.JobDto;
 import br.com.vivo.jobs.jobscheduler.dto.JobListDto;
+import br.com.vivo.jobs.jobscheduler.model.Job;
 
 public class TestUtil {
 	
@@ -21,7 +24,18 @@ public class TestUtil {
 		jobDto.setTempoEstimadoStr(tempoEstimado);
 		
 		return jobDto;
+	}
+	
+	public static Job createJob(Long id, String descricao, LocalDateTime datamax, BigDecimal tempoEstimado) {
 		
+		Job job = new Job();
+		
+		job.setId(id);
+		job.setDescricao(descricao);
+		job.setDataMaximaConclusao(datamax);
+		job.setTempoEstimado(tempoEstimado.setScale(2,RoundingMode.UP));
+		
+		return job;		
 	}
 	
 	public static JobListDto createJobListDtoValid(List<JobDto> jobDtolist, String janela) {
@@ -31,8 +45,7 @@ public class TestUtil {
 		jobListDto.setJanelaExecucao(janela);		
 		jobListDto.setJobDtoList(jobDtolist);
 		
-		return jobListDto;
-		
+		return jobListDto;		
 	}
 
 }

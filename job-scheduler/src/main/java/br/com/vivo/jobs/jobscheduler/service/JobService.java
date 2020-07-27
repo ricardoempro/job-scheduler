@@ -32,10 +32,10 @@ public class JobService {
 
 			jobSelecionado = getJobDateMaxMinor(jobList);
 			if (putJobInGroup(jobSelecionado, listGroup, 0)) {
-				removeJobList(jobList, jobSelecionado);
+				jobList.remove(jobSelecionado);
 			} else {
 				jobPendentes.add(jobSelecionado);
-				removeJobList(jobList, jobSelecionado);
+				jobList.remove(jobSelecionado);
 			}
 		}
 
@@ -69,10 +69,6 @@ public class JobService {
 		}
 
 		return job;
-	}
-
-	private void removeJobList(List<Job> jobList, Job job) {
-		jobList.remove(job);
 	}
 
 	private boolean putJobInGroup(Job job, List<JobGroup> listGroup, int nivel) {
@@ -123,10 +119,10 @@ public class JobService {
 										|| jobGroupProx.getTempoOcioso()
 												.compareTo(jobEmAnalise.getTempoEstimado()) == 0)) {
 							
-							removeJobList(groupJobList, jobEmAnalise);
+							groupJobList.remove(jobEmAnalise);
 							jobGroup.setTempoOcioso(jobGroup.getTempoOcioso()
 									.add(jobEmAnalise.getTempoEstimado()));
-							jobGroup.getJobList().add(job);
+							groupJobList.add(job);
 							jobGroup.setTempoOcioso(jobGroup.getTempoOcioso().subtract(job.getTempoEstimado()));
 
 							return putJobInGroup(jobEmAnalise, listGroup, nivel + 1);
