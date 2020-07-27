@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "727538c2-8bdd-4c92-8cd2-3eb1a8b14f5d",
+		"name": "JobsScheduler",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetJob",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/jobscheduler/api/v1/jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobscheduler",
+						"api",
+						"v1",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostMapperTest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"ID\": 1,\r\n\t\"Descrição\": \"Importação de arquivos de fundos\",\r\n\t\"Data Máxima de conclusão\": \"2019-11-10 12:00:00\",\r\n\t\"Tempo estimado\": \"2 horas 45 min\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jobscheduler/api/v1/jobs/mapper-test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobscheduler",
+						"api",
+						"v1",
+						"jobs",
+						"mapper-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JobScheduleList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Janela de execução\":\"2019-11-10 09:00:00 até 2019-11-11 12:00:00\",\r\n\t\"Lista de jobs\":[\r\n\t\t{\r\n\t\t\t\"ID\":1,\r\n\t\t\t\"Descrição\":\"Importação de arquivos de fundos\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-10 12:00:00\",\r\n\t\t\t\"Tempo estimado\":\"2 horas\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":2,\r\n\t\t\t\"Descrição\":\"Importação de dados da Base Legada\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 12:00:00\",\r\n\t\t\t\"Tempo estimado\":\"4 horas\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":4,\r\n\t\t\t\"Descrição\":\"Importação de csv\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 07:00:00\",\r\n\t\t\t\"Tempo estimado\":\"3 horas 30 min\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":3,\r\n\t\t\t\"Descrição\":\"Importação de dados de integração\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 08:00:00\",\r\n\t\t\t\"Tempo estimado\":\"6 horas\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":5,\r\n\t\t\t\"Descrição\":\"Importação de dados de logs\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 08:00:00\",\r\n\t\t\t\"Tempo estimado\":\"5 horas 30 min\"\r\n\t\t}\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jobscheduler/api/v1/jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobscheduler",
+						"api",
+						"v1",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JobScheduleAllGroups",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Janela de execução\":\"2019-11-10 09:00:00 até 2019-11-11 12:00:00\",\r\n\t\"Lista de jobs\":[\r\n\t\t{\r\n\t\t\t\"ID\":1,\r\n\t\t\t\"Descrição\":\"Importação de arquivos de fundos\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-10 12:00:00\",\r\n\t\t\t\"Tempo estimado\":\"2 horas\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":2,\r\n\t\t\t\"Descrição\":\"Importação de dados da Base Legada\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 09:00:00\",\r\n\t\t\t\"Tempo estimado\":\"4 horas\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":4,\r\n\t\t\t\"Descrição\":\"Importação de csv\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 07:00:00\",\r\n\t\t\t\"Tempo estimado\":\"3 horas 30 min\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":3,\r\n\t\t\t\"Descrição\":\"Importação de dados de integração\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 08:00:00\",\r\n\t\t\t\"Tempo estimado\":\"6 horas\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":5,\r\n\t\t\t\"Descrição\":\"Importação de dados de logs\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 08:00:00\",\r\n\t\t\t\"Tempo estimado\":\"5 horas 30 min\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"ID\":6,\r\n\t\t\t\"Descrição\":\"Importação de dados xml\",\r\n\t\t\t\"Data Máxima de conclusão\":\"2019-11-11 09:00:00\",\r\n\t\t\t\"Tempo estimado\":\"3 horas\"\r\n\t\t}\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/jobscheduler/api/v1/jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"jobscheduler",
+						"api",
+						"v1",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
